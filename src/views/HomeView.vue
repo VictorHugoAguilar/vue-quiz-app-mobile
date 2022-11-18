@@ -93,13 +93,22 @@ export default {
       }
     ];
 
-    const onQuizStart = () => {
-      currentQuestion.value = questions[questionCounter.value];
+    const loadQuestion = () => {
+      // check if there are more question to load
+      if (questions.length > questionCounter.value) {
+        // load question
+        currentQuestion.value = questions[questionCounter.value];
+        console.log('Cuerren questions', currentQuestion.value);
+        questionCounter.value++;
+      } else {
+        // no more questions
+        console.log('no more question');
+      }
     };
 
     // lifecycle hooks
     onMounted(() => {
-      onQuizStart();
+      loadQuestion();
     });
 
     // methods/functions
@@ -108,6 +117,14 @@ export default {
       if (element) {
         itemRef.push(element);
       }
+    };
+
+    const clearSelected = divSelected => {
+      setTimeout(() => {
+        divSelected.classList.remove('option-correct');
+        divSelected.classList.remove('option-wrong');
+        divSelected.classList.add('option-default');
+      }, 1000);
     };
 
     const onOptionClicked = (choiceSelected, item) => {
@@ -122,6 +139,9 @@ export default {
         divContainer.classList.add('option-wrong');
         divContainer.classList.remove('option-default');
       }
+      clearSelected(divContainer)
+      // TODO: go to next question
+      // loadQuestion();
     };
 
     // return
@@ -130,7 +150,7 @@ export default {
       currentQuestion,
       questions,
       questionCounter,
-      onQuizStart,
+      loadQuestion,
       onOptionClicked
     }
   },
