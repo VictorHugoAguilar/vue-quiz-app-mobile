@@ -6,7 +6,12 @@
 
       <!-- buttons -->
       <div class="flex justify-around">
-        <!-- <div class="rounded-full py-1 w-28 border cursor-pointer hover:text-black hover:bg-white">Done</div> -->
+        <div
+          class="rounded-full py-1 w-28 border cursor-pointer hover:text-black hover:bg-white mr-4"
+          @click="goToMain()"
+        >
+          Back to Main
+        </div>
         <div
           class="rounded-full py-1 w-28 border cursor-pointer hover:text-black hover:bg-white"
           @click="$emit('restartQuiz')"
@@ -19,11 +24,15 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 export default {
   name: 'QuizCompleteOverlay',
   props: ['percent'],
-  setup() {}
+  setup() {
+    const router = useRouter();
+    return {
+      goToMain: () => router.push({ name: 'home' })
+    };
+  }
 };
 </script>
-
-<style></style>
