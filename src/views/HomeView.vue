@@ -1,8 +1,10 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
   <main class="flex h-screen items-center justify-center bg-gray-800">
+
     <!-- Quiz overlay -->
     <QuizCompleteOverlay v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
+
     <!-- quiz container -->
     <div class="overflow-hidden bg-white container relative shadow-lg rounded-lg px-12 py-6">
 
@@ -43,7 +45,7 @@
                   {{ item }}
                 </div>
                 <div class="flex items-center pl-6">
-                  {{ choice }}
+                  {{ undecodeText(choice) }}
                 </div>
               </div>
             </div>
@@ -58,7 +60,6 @@
         </div>
 
       </div>
-
     </div>
   </main>
 </template>
@@ -67,8 +68,14 @@
 import { onMounted, ref } from 'vue';
 import QuizCompleteOverlay from '@/components/QuizCompleteOverlay.vue';
 // import getQuestionMock from '@/mocks/question-mocks';
+import useQuestionCharger from '@/use/use-charge-question.js';
+import undecodeText from '@/use/use-undecode-string.js';
 
 export default {
+  name: 'HomeView',
+  components: {
+    QuizCompleteOverlay
+  },
   setup() {
     // data
     let canClick = true;
@@ -82,22 +89,21 @@ export default {
       answer: 1,
       choices: []
     });
-
+    let itemRef = [];
     const questions = ref([]); //getQuestionMock();
 
     const loadQuestion = () => {
       canClick = true;
+      itemRef = [];
       // check if there are more question to load
       if (questions.value.length > questionCounter.value) {
         // load question
         timer.value = 100;
         currentQuestion.value = questions.value[questionCounter.value];
-        console.log('Cuerrent questions', currentQuestion.value);
         questionCounter.value++;
       } else {
         // no more questions
         onQuizEnd();
-        console.log('no more question');
       }
     };
 
@@ -106,39 +112,19 @@ export default {
         if (timer.value > 0) {
           timer.value--;
         } else {
-          console.log('timer is up');
+          // Time is up
           onQuizEnd();
           clearInterval(interVal);
         }
-      }, 100);
+      }, 150);
     };
 
     const fetchQuestionsFromServer = async function () {
-      console.log('fetch questions from server');
-      fetch('https://opentdb.com/api.php?amount=10&category=18')
-        .then(res => {
-          return res.json();
-        })
-        .then(data => {
-          console.log('serverQuestion data', data);
-          // map json to fit our own arrangement
-          const newQuestions = data.results.map(serverQuestion => {
-            const arrangedQuestion = {
-              question: serverQuestion.question,
-              choices: '',
-              answer: ''
-            };
-            const choices = serverQuestion.incorrect_answers;
-            arrangedQuestion.answer = Math.floor(Math.random() * 4 + 1);
-            choices.splice(arrangedQuestion.answer - 1, 0, serverQuestion.correct_answer);
-            arrangedQuestion.choices = choices;
-            return arrangedQuestion;
-          });
-          console.log('new formatted questions', newQuestions);
-          questions.value = newQuestions;
-          loadQuestion();
-          countDownTimer();
-        });
+      useQuestionCharger().then(data => {
+        questions.value = data;
+        loadQuestion();
+        countDownTimer();
+      });
     };
 
     const onQuizEnd = function () {
@@ -152,6 +138,7 @@ export default {
 
     const onQuizStart = () => {
       //1 . set default values
+      itemRef = [];
       canClick = true;
       timer.value = 100;
       endOfQuiz.value = false;
@@ -175,9 +162,8 @@ export default {
     });
 
     // methods/functions
-    let itemRef = [];
     const optionChosen = element => {
-      if (element) {
+      if (element && !itemRef.includes(element)) {
         itemRef.push(element);
       }
     };
@@ -188,31 +174,28 @@ export default {
         divSelected.classList.remove('option-wrong');
         divSelected.classList.add('option-default');
         loadQuestion();
-      }, 1000);
+      }, 500);
     };
 
     const onOptionClicked = (choiceSelected, item) => {
       if (canClick) {
-        // TODO select on option
         const divContainer = itemRef[item];
         const optionId = item + 1;
         if (currentQuestion.value.answer === optionId) {
-          console.log('you are correct');
+          // you are correct
           score.value = score.value + 10;
           divContainer.classList.add('option-correct');
           divContainer.classList.remove('option-default');
         } else {
-          console.log('you are wrong');
+          // you are wrong
           divContainer.classList.add('option-wrong');
           divContainer.classList.remove('option-default');
         }
         canClick = false;
+        // go to next question
         clearSelected(divContainer);
-        // TODO: go to next question
-        // loadQuestion();
       } else {
         // cant select option
-        console.log('cant selecte question');
       }
     };
 
@@ -228,31 +211,14 @@ export default {
       onOptionClicked,
       onQuizStart,
       endOfQuiz,
-      percentageScore
+      percentageScore,
+      undecodeText
     };
   },
   computed: {
     formattedQuestion() {
-      let entities = {
-        amp: '&',
-        apos: "'",
-        '#x27': "'",
-        '#x2F': '/',
-        '#39': "'",
-        '#47': '/',
-        lt: '<',
-        gt: '>',
-        nbsp: ' ',
-        quot: '"',
-        '#039': "'"
-      };
-      return this.currentQuestion.question.replace(/&([^;]+);/gm, function (match, entity) {
-        return entities[entity] || match;
-      });
+      return undecodeText(this.currentQuestion.question);
     }
-  },
-  components: {
-    QuizCompleteOverlay
   }
 };
 </script>
