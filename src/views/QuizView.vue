@@ -2,6 +2,9 @@
 <template>
   <main class="flex h-screen items-center justify-center bg-gray-800">
 
+    <!-- Loading data -->
+    <LoadingData  v-if="loadingData" />
+
     <!-- Quiz overlay -->
     <QuizCompleteOverlay v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
 
@@ -15,19 +18,19 @@
 
         <div class="flex justify-between">
 
-        <!-- score container -->
-        <div class="text-left text-gray-800">
-          <p class="text-sm leading-3">Category Selected</p>
-          <p class="font-bold">{{ getCategory }}</p>
-        </div>
+          <!-- score container -->
+          <div class="text-left text-gray-800">
+            <p class="text-sm leading-3">Category Selected</p>
+            <p class="font-bold">{{ getCategory }}</p>
+          </div>
 
-        <!-- score container -->
-        <div class="text-right text-gray-800">
-          <p class="text-sm leading-3">Score</p>
-          <p class="font-bold">{{ score }}</p>
-        </div>
+          <!-- score container -->
+          <div class="text-right text-gray-800">
+            <p class="text-sm leading-3">Score</p>
+            <p class="font-bold">{{ score }}</p>
+          </div>
 
-      </div>
+        </div>
 
         <!-- timer container -->
         <div class="bg-white shadow-lg p-1 rounded-full w-full h-5 mt-4">
@@ -44,7 +47,7 @@
           <div v-for="(choice, item) in currentQuestion.choices" :key="item">
             <!-- option container -->
             <div class="neumorph-1 option-default bg-gray-100 p-2 rounded-lg mb-3 relative" :ref="optionChosen"
-              @click="onOptionClicked(choice, item)">
+                 @click="onOptionClicked(choice, item)">
               <div
                 class="bg-blue-500 p-1 transform rotate-45 rounded-md h-10 w-10 text-white font-bold absolute right-0 -top-0 shadow-md">
                 <p class="transform -rotate-45">+10</p>
@@ -78,13 +81,15 @@
 import { onMounted, ref, computed } from 'vue';
 import { useRoute } from 'vue-router'
 import QuizCompleteOverlay from '@/components/QuizCompleteOverlay.vue';
+import LoadingData from '@/components/LoadingData.vue';
 import useQuestionCharger from '@/use/use-charge-question.js';
 import undecodeText from '@/use/use-undecode-string.js';
 
 export default {
   name: 'QuizView',
   components: {
-    QuizCompleteOverlay
+    QuizCompleteOverlay,
+    LoadingData
   },
   setup() {
     // data
@@ -102,6 +107,7 @@ export default {
     let itemRef = [];
     const questions = ref([]); //getQuestionMock();
     const category = ref('');
+    const loadingData = ref(true)
 
     const loadQuestion = () => {
       canClick = true;
@@ -141,11 +147,14 @@ export default {
     };
 
     const fetchQuestionsFromServer = async function (category) {
-      useQuestionCharger(category).then(data => {
-        questions.value = data;
-        loadQuestion();
-        countDownTimer();
-      });
+      loadingData.value = true;
+      useQuestionCharger(category)
+        .then(data => {
+          questions.value = data;
+          loadQuestion();
+          countDownTimer(); })
+        .catch( error => console.error(error) )
+        .finally( () => loadingData.value = false )
     };
 
     const onQuizEnd = function () {
@@ -230,7 +239,8 @@ export default {
       endOfQuiz,
       percentageScore,
       undecodeText,
-      getCategory
+      getCategory,
+      loadingData
     };
   },
   computed: {
