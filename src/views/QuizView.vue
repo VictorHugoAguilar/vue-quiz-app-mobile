@@ -9,54 +9,52 @@
     <QuizCompleteOverlay v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
 
     <!-- quiz container -->
-    <div class="overflow-hidden bg-white container relative shadow-lg rounded-lg px-12 py-6">
-
-      <img src="@/assets/images/abstract.svg" alt="background" class="absolute -top-10 left-0 object-none" />
+    <div class="overflow-hidden container relative px-4 py-4 background-image">
 
       <!-- contents -->
       <div class="relative z-20">
 
         <!-- header quiz -->
-        <div class="flex justify-between">
+        <div class="flex justify-between header">
           <!-- score container -->
-          <div class="text-left text-gray-800">
+          <div class="mt-10 ml-12 text-left text-header-category">
             <p class="text-sm leading-3">Category Selected</p>
             <p class="font-bold">{{ getCategory }}</p>
           </div>
           <!-- score container -->
-          <div class="text-right text-gray-800">
-            <p class="text-sm leading-3">Score</p>
-            <p class="font-bold">{{ score }}</p>
+          <div class="text-center text-header-score image-start">
+            <p class="mt-8 font-bold">{{ score }}</p>
+            <p class="text-sm font-bold leading-3">Score</p>
           </div>
         </div>
         <!-- end header quiz -->
 
         <!-- timer container -->
-        <div class="bg-white shadow-lg p-1 rounded-full w-full h-5 mt-4">
-          <div class="bg-blue-700 rounded-full w-11/12 h-full" :style="`width:${timer}%`"></div>
+        <div class="timer-container bg-white shadow-lg p-1 rounded-full w-full h-5 mt-4">
+          <div class="timer-container-internal  rounded-full w-11/12 h-full" :style="`width:${timer}%`"></div>
         </div>
 
         <!-- question container -->
-        <div class="rounded-lg bg-gray-100 p-2 neumorph-1 text-center font-bold text-gray-800 mt-8">
-          <div class="bg-white p-5">{{ formattedQuestion }}</div>
+        <div class="rounded-lg border-option p-2 neumorph-1 text-center font-bold text-gray-800 mt-8">
+          <div class="background-option p-5">{{ formattedQuestion }}</div>
         </div>
 
         <!-- options container -->
         <div class="mt-8 options-container">
           <div v-for="(choice, item) in currentQuestion.choices" :key="item">
             <!-- option container -->
-            <div class="neumorph-1 option-default bg-gray-100 p-2 rounded-lg mb-3 relative" :ref="optionChosen"
+            <div class="neumorph-1 option-default border-option p-2 rounded-lg mb-3 relative" :ref="optionChosen"
               @click="onOptionClicked(choice, item)">
               <div
                 class="bg-blue-500 p-1 transform rotate-45 rounded-md h-10 w-10 text-white font-bold absolute right-0 -top-0 shadow-md">
                 <p class="transform -rotate-45">+10</p>
               </div>
-              <div class="rounded-lg font-bold flex p-2">
+              <div class="rounded-lg font-bold flex p-2 background-option ">
                 <!-- option id -->
                 <div class="p-3 rounded-lg">
                   {{ item }}
                 </div>
-                <div class="flex items-center pl-6">
+                <div class="flex items-center pl-6 choice">
                   {{ undecodeText(choice) }}
                 </div>
               </div>
@@ -70,9 +68,8 @@
       <!-- footer quiz -->
       <div class="footer-quiz">
         <!-- progress indicator container -->
-        <div class="text-center">
-          <div class="h-1 w-12 bg-gray-800 rounded-full mx-auto"></div>
-          <p class="font-bold text-gray-800">{{ questionCounter }}/{{ questions.length }}</p>
+        <div class="text-center image-footer">
+          <p class="font-bold text-footer">{{ questionCounter }}/{{ questions.length }}</p>
         </div>
       </div>
       <!-- end footer quiz -->
@@ -145,7 +142,7 @@ export default {
           onQuizEnd();
           clearInterval(interVal);
         }
-      }, 150);
+      }, 99150);
     };
 
     const fetchQuestionsFromServer = async function (category) {
@@ -261,15 +258,81 @@ export default {
   min-height: 800px;
   max-height: 800px;
   border-radius: 25px;
+  background-color: transparent;
+}
+
+.background-image {
+  background-image: url('@/assets/svg/background_quiz_menu.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 500px;
+}
+
+.image-start {
+  background-image: url('@/assets/svg/start-menu.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+}
+
+.header {
+  height: 100px;
+}
+
+.text-header-score {
+  color: var(--c0);
+}
+
+.text-header-category {
+  color: var(--c0);
 }
 
 .neumorph-1 {
-  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.09), -6px -6px 18px #ffffff;
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.09), -6px -6px 18px var(--c2);
+}
+
+.timer-container {
+  background-color: var(--c1);
+}
+
+.timer-container-internal {
+  background-color: var(--c2);
+}
+
+.border-option {
+  background-color: var(--c1);
+}
+
+.background-option {
+  background-color: var(--c2) !important;
+  color: var(--c0) !important;
+}
+
+.choice {
+  margin-left: 5px;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .footer-quiz {
   position: absolute;
-  bottom: 20px;
-  right: 250px;
+  bottom: 10px;
+  right: 220px;
+}
+
+.image-footer {
+  background-image: url('@/assets/svg/start-menu.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 80px;
+  height: 80px;
+  padding-top: 30px;
+}
+
+.text-footer {
+  color: var(--c0);
 }
 </style>

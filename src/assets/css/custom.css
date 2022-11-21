@@ -1,4 +1,9 @@
 /* Custom */
+* {
+  --c0: #482610;
+  --c1: #e16c00;
+  --c2: #f8c638;
+}
 
 .option-default {
   @apply cursor-pointer;
@@ -9,11 +14,14 @@
 }
 
 .option-default div:nth-child(2) div:nth-child(1) {
-  @apply inline bg-gray-400 text-gray-800;
+  @apply inline;
+  background-color: var(--c1);
+  color: var(--c0)
 }
 
 .option-default div:nth-child(2) {
-  @apply bg-white text-gray-800;
+  @apply text-gray-800;
+  color: var(--c0)
 }
 
 /* wrong custom class */
