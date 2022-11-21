@@ -3,14 +3,14 @@
   <main class="flex h-screen items-center justify-center bg-gray-800 ">
 
     <!-- quiz container -->
-    <div class="overflow-hidden bg-white container relative shadow-lg rounded-lg px-12 py-6 min-h-[80%]">
+    <div class="overflow-hidden bg-white container relative shadow-lg rounded-lg px-12 py-6 min-h-540">
 
       <img src="@/assets/images/abstract.svg" alt="background" class="absolute -top-10 left-0 object-none" />
 
       <!-- contents -->
       <div class="relative z-20">
 
-        <!-- timer container -->
+        <!-- main title -->
         <div class="p-1 w-full h-32 mt-10 container-main-title">
           <span class="sticker sticker-lg" data-text="TRIVIAL"><span>TRIVIAL</span></span>
         </div>
@@ -52,8 +52,9 @@ export default {
 
 <style scoped>
 .container {
-  min-width: 400px;
+  min-width: 500px;
   max-width: 540px;
+  min-height: 800px;
   border-radius: 25px;
   background-color: #ef548f;
 }

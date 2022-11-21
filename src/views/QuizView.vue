@@ -3,7 +3,7 @@
   <main class="flex h-screen items-center justify-center bg-gray-800">
 
     <!-- Loading data -->
-    <LoadingData  v-if="loadingData" />
+    <LoadingData v-if="loadingData" />
 
     <!-- Quiz overlay -->
     <QuizCompleteOverlay v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
@@ -16,21 +16,20 @@
       <!-- contents -->
       <div class="relative z-20">
 
+        <!-- header quiz -->
         <div class="flex justify-between">
-
           <!-- score container -->
           <div class="text-left text-gray-800">
             <p class="text-sm leading-3">Category Selected</p>
             <p class="font-bold">{{ getCategory }}</p>
           </div>
-
           <!-- score container -->
           <div class="text-right text-gray-800">
             <p class="text-sm leading-3">Score</p>
             <p class="font-bold">{{ score }}</p>
           </div>
-
         </div>
+        <!-- end header quiz -->
 
         <!-- timer container -->
         <div class="bg-white shadow-lg p-1 rounded-full w-full h-5 mt-4">
@@ -43,11 +42,11 @@
         </div>
 
         <!-- options container -->
-        <div class="mt-8">
+        <div class="mt-8 options-container">
           <div v-for="(choice, item) in currentQuestion.choices" :key="item">
             <!-- option container -->
             <div class="neumorph-1 option-default bg-gray-100 p-2 rounded-lg mb-3 relative" :ref="optionChosen"
-                 @click="onOptionClicked(choice, item)">
+              @click="onOptionClicked(choice, item)">
               <div
                 class="bg-blue-500 p-1 transform rotate-45 rounded-md h-10 w-10 text-white font-bold absolute right-0 -top-0 shadow-md">
                 <p class="transform -rotate-45">+10</p>
@@ -66,13 +65,17 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- footer quiz -->
+      <div class="footer-quiz">
         <!-- progress indicator container -->
-        <div class="mt-8 text-center">
+        <div class="text-center">
           <div class="h-1 w-12 bg-gray-800 rounded-full mx-auto"></div>
           <p class="font-bold text-gray-800">{{ questionCounter }}/{{ questions.length }}</p>
         </div>
-
       </div>
+      <!-- end footer quiz -->
     </div>
   </main>
 </template>
@@ -253,11 +256,20 @@ export default {
 
 <style scoped>
 .container {
+  min-width: 500px;
   max-width: 540px;
+  min-height: 800px;
+  max-height: 800px;
   border-radius: 25px;
 }
 
 .neumorph-1 {
   box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.09), -6px -6px 18px #ffffff;
+}
+
+.footer-quiz {
+  position: absolute;
+  bottom: 20px;
+  right: 250px;
 }
 </style>
