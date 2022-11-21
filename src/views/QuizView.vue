@@ -13,11 +13,21 @@
       <!-- contents -->
       <div class="relative z-20">
 
+        <div class="flex justify-between">
+
+        <!-- score container -->
+        <div class="text-left text-gray-800">
+          <p class="text-sm leading-3">Category Selected</p>
+          <p class="font-bold">{{ getCategory }}</p>
+        </div>
+
         <!-- score container -->
         <div class="text-right text-gray-800">
           <p class="text-sm leading-3">Score</p>
           <p class="font-bold">{{ score }}</p>
         </div>
+
+      </div>
 
         <!-- timer container -->
         <div class="bg-white shadow-lg p-1 rounded-full w-full h-5 mt-4">
@@ -65,9 +75,9 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
+import { useRoute } from 'vue-router'
 import QuizCompleteOverlay from '@/components/QuizCompleteOverlay.vue';
-// import getQuestionMock from '@/mocks/question-mocks';
 import useQuestionCharger from '@/use/use-charge-question.js';
 import undecodeText from '@/use/use-undecode-string.js';
 
@@ -91,6 +101,7 @@ export default {
     });
     let itemRef = [];
     const questions = ref([]); //getQuestionMock();
+    const category = ref('');
 
     const loadQuestion = () => {
       canClick = true;
@@ -107,6 +118,16 @@ export default {
       }
     };
 
+    // lifecycle hooks
+    onMounted(() => {
+      const route = useRoute();
+      const cate =  route.path.replace("/", "");
+      console.log('category ', cate)
+      category.value = cate;
+      //2. fetch questions from server
+      fetchQuestionsFromServer(category.value);
+    });
+
     const countDownTimer = () => {
       let interVal = setInterval(() => {
         if (timer.value > 0) {
@@ -119,8 +140,8 @@ export default {
       }, 150);
     };
 
-    const fetchQuestionsFromServer = async function () {
-      useQuestionCharger().then(data => {
+    const fetchQuestionsFromServer = async function (category) {
+      useQuestionCharger(category).then(data => {
         questions.value = data;
         loadQuestion();
         countDownTimer();
@@ -152,14 +173,8 @@ export default {
       percentageScore.value = 0;
       questions.value = [];
       //2. fetch questions from server
-      fetchQuestionsFromServer();
+      fetchQuestionsFromServer(category.value);
     };
-
-    // lifecycle hooks
-    onMounted(() => {
-      //2. fetch questions from server
-      fetchQuestionsFromServer();
-    });
 
     // methods/functions
     const optionChosen = element => {
@@ -199,6 +214,8 @@ export default {
       }
     };
 
+    const getCategory = computed(() => category.value.replace("-", " ").toUpperCase());
+
     // return
     return {
       timer,
@@ -212,7 +229,8 @@ export default {
       onQuizStart,
       endOfQuiz,
       percentageScore,
-      undecodeText
+      undecodeText,
+      getCategory
     };
   },
   computed: {

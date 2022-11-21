@@ -1,5 +1,12 @@
-export default async function () {
-  return fetch('https://opentdb.com/api.php?amount=10&category=18')
+export default async function (category) {
+  const categories = {
+    "general-knowledge" : 9,
+    "entertainment-film" : 11,
+    "science-geography" : 22,
+    "science-mathematics" : 19,
+    "science-computer" : 18
+  }
+  return fetch(`https://opentdb.com/api.php?amount=10&category=${categories[category]}`)
     .then(res => {
       return res.json();
     })
