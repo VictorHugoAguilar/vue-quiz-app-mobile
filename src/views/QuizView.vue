@@ -142,7 +142,7 @@ export default {
           onQuizEnd();
           clearInterval(interVal);
         }
-      }, 99150);
+      }, 150);
     };
 
     const fetchQuestionsFromServer = async function (category) {
