@@ -3,25 +3,22 @@
   <main class="flex h-screen items-center justify-center bg-gray-800 ">
 
     <!-- quiz container -->
-    <div class="overflow-hidden bg-white container relative shadow-lg rounded-lg px-12 py-6 min-h-540">
-
-      <img src="@/assets/images/abstract.svg" alt="background" class="absolute -top-10 left-0 object-none" />
+    <div class="overflow-hidden bg-white container relative px-12 py-6 min-h-540 background-image">
 
       <!-- contents -->
       <div class="relative z-20">
 
         <!-- main title -->
-        <div class="p-1 w-full h-32 mt-10 container-main-title">
+        <div class="container-main-title">
           <span class="sticker sticker-lg" data-text="TRIVIAL"><span>TRIVIAL</span></span>
         </div>
+        <!-- end main title -->
 
         <div class="container-list mt-10">
           <div class="container-list-buttons">
-            <button @click="gotTo('general-knowledge')">General Knowledge</button>
-            <button @click="gotTo('entertainment-film')">Entertainment: Film</button>
-            <button @click="gotTo('science-geography')">Geography</button>
-            <button @click="gotTo('science-mathematics')">Science: Mathematics</button>
-            <button @click="gotTo('science-computer')">Science: Computer</button>
+            <button v-for="category of categories" :key="category" @click="gotTo(category)">
+              {{ formatSnakeCaseToUpperCase(category) }}
+            </button>
           </div>
         </div>
 
@@ -32,11 +29,17 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import { formatSnakeCaseToUpperCase } from '@/use/use-format.js';
+
 export default {
   name: 'HomeView',
   setup() {
     const router = useRouter();
+    const store = useStore();
+
     function gotTo(category) {
       router.push({
         name: 'quiz',
@@ -44,7 +47,9 @@ export default {
       });
     }
     return {
-      gotTo
+      gotTo,
+      categories: computed(() => store.state.categories),
+      formatSnakeCaseToUpperCase
     };
   }
 };
@@ -54,9 +59,20 @@ export default {
 .container {
   min-width: 500px;
   max-width: 540px;
-  min-height: 800px;
+  min-height: 850px;
   border-radius: 25px;
-  background-color: #ef548f;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.background-image {
+  background-image: url('@/assets/svg/background_main_menu.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 500px;
 }
 
 .neumorph-1 {
@@ -64,7 +80,7 @@ export default {
 }
 
 .container-main-title {
-  min-height: 100vh;
+  margin-top: 100px;
   min-height: -webkit-fill-available;
   display: grid;
   place-content: center;
@@ -75,13 +91,14 @@ export default {
 
 * {
   /* box-sizing: border-box; */
-  --t: rgba(255, 0, 0, 0);
-  --w: rgba(255, 255, 255, 0.98);
-  --c1: #ef548f;
-  --c2: #ef8b6d;
-  --c3: #cfef6b;
-  --c4: #3bf0c1;
-  --c5: #bb4af0;
+  --t: rgba(104, 8, 8, 0);
+  --w: #ffe300;
+  --c1: #ffcd00;
+  --c2: #fda000;
+  --c3: #e57400;
+  --c4: #fda000;
+  --c5: #ffcd00;
+  --c6: #4b220b;
   --shine-angle: 15deg;
 }
 
@@ -145,6 +162,7 @@ container-list {
 }
 
 button {
+  color: var(--c6);
   display: block;
   position: relative;
   margin: 0.5em 0;
