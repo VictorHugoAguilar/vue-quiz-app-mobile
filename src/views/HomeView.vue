@@ -101,20 +101,14 @@ export default {
 }
 
 .sticker-lg span {
-  background: linear-gradient(var(--shine-angle),
-      var(--t) 0%,
-      var(--t) 35%,
-      var(--w) 49.95%,
-      var(--w) 50.15%,
-      var(--t) 65%,
-      var(--t)),
+  background: linear-gradient(var(--shine-angle), var(--t) 0%, var(--t) 35%, var(--w) 49.95%, var(--w) 50.15%, var(--t) 65%, var(--t)),
     linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.02em rgba(0, 0, 0, 0.6);
 }
 
-.sticker>*,
+.sticker > *,
 .sticker::before,
 .sticker::after {
   grid-area: text;
@@ -153,23 +147,17 @@ button {
   display: block;
   position: relative;
   margin: 0.5em 0;
-  padding: .8em 2.2em;
+  padding: 0.8em 2.2em;
   cursor: pointer;
 
-  background: linear-gradient(var(--shine-angle),
-      var(--t) 0%,
-      var(--t) 35%,
-      var(--w) 49.95%,
-      var(--w) 50.15%,
-      var(--t) 65%,
-      var(--t)),
+  background: linear-gradient(var(--shine-angle), var(--t) 0%, var(--t) 35%, var(--w) 49.95%, var(--w) 50.15%, var(--t) 65%, var(--t)),
     linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
   border: 3px solid rgb(143, 92, 10);
-  border-radius: .4em;
+  border-radius: 0.4em;
 
   text-transform: uppercase;
   font-size: 1.4em;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   letter-spacing: 0.04em;
 
@@ -192,22 +180,20 @@ button:after {
   mix-blend-mode: inherit;
   border-radius: inherit;
   transform-style: preserve-3d;
-  transform: translate3d(calc(var(--z) * 0px),
-      calc(var(--z) * 0px),
-      calc(var(--z) * 0px));
+  transform: translate3d(calc(var(--z) * 0px), calc(var(--z) * 0px), calc(var(--z) * 0px));
 }
 
 button:after {
-  background-color: #5D00FF;
+  background-color: #5d00ff;
 }
 
 button:before {
-  background-color: #FF1731;
+  background-color: #ff1731;
 }
 
 button:hover {
-  background-color: #FFF65B;
-  transition: background .3s 0.1s;
+  background-color: #fff65b;
+  transition: background 0.3s 0.1s;
 }
 
 button:hover:before {
@@ -247,54 +233,38 @@ button:hover:after {
 @keyframes translateWobble {
   0% {
     opacity: 0;
-    transform: translate3d(calc(var(--z) * 0px),
-        calc(var(--z) * 0px),
-        calc(var(--z) * 0px));
+    transform: translate3d(calc(var(--z) * 0px), calc(var(--z) * 0px), calc(var(--z) * 0px));
   }
 
   16% {
-    transform: translate3d(calc(var(--z) * 160px),
-        calc(var(--z) * 160px),
-        calc(var(--z) * 160px));
+    transform: translate3d(calc(var(--z) * 160px), calc(var(--z) * 160px), calc(var(--z) * 160px));
   }
 
   28% {
     opacity: 1;
-    transform: translate3d(calc(var(--z) * 70px),
-        calc(var(--z) * 70px),
-        calc(var(--z) * 70px));
+    transform: translate3d(calc(var(--z) * 70px), calc(var(--z) * 70px), calc(var(--z) * 70px));
   }
 
   44% {
-    transform: translate3d(calc(var(--z) * 130px),
-        calc(var(--z) * 130px),
-        calc(var(--z) * 130px));
+    transform: translate3d(calc(var(--z) * 130px), calc(var(--z) * 130px), calc(var(--z) * 130px));
   }
 
   59% {
-    transform: translate3d(calc(var(--z) * 85px),
-        calc(var(--z) * 85px),
-        calc(var(--z) * 85px));
+    transform: translate3d(calc(var(--z) * 85px), calc(var(--z) * 85px), calc(var(--z) * 85px));
   }
 
   73% {
-    transform: translate3d(calc(var(--z) * 110px),
-        calc(var(--z) * 110px),
-        calc(var(--z) * 110px));
+    transform: translate3d(calc(var(--z) * 110px), calc(var(--z) * 110px), calc(var(--z) * 110px));
   }
 
   88% {
     opacity: 1;
-    transform: translate3d(calc(var(--z) * 90px),
-        calc(var(--z) * 90px),
-        calc(var(--z) * 90px));
+    transform: translate3d(calc(var(--z) * 90px), calc(var(--z) * 90px), calc(var(--z) * 90px));
   }
 
   100% {
     opacity: 1;
-    transform: translate3d(calc(var(--z) * 100px),
-        calc(var(--z) * 100px),
-        calc(var(--z) * 100px));
+    transform: translate3d(calc(var(--z) * 100px), calc(var(--z) * 100px), calc(var(--z) * 100px));
   }
 }
 </style>

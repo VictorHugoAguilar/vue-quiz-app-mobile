@@ -6,16 +6,10 @@
 
       <!-- buttons -->
       <div class="flex justify-around">
-        <div
-          class="rounded-full py-1 w-28 border cursor-pointer hover:text-black hover:bg-white mr-4"
-          @click="goToMain()"
-        >
+        <div class="rounded-full py-1 w-28 border cursor-pointer hover:text-black hover:bg-white mr-4" @click="goToMain()">
           Back to Main
         </div>
-        <div
-          class="rounded-full py-1 w-28 border cursor-pointer hover:text-black hover:bg-white"
-          @click="$emit('restartQuiz')"
-        >
+        <div class="rounded-full py-1 w-28 border cursor-pointer hover:text-black hover:bg-white" @click="$emit('restartQuiz')">
           Play Again
         </div>
       </div>

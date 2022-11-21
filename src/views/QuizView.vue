@@ -79,7 +79,7 @@
 
 <script>
 import { onMounted, ref, computed } from 'vue';
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router';
 import QuizCompleteOverlay from '@/components/QuizCompleteOverlay.vue';
 import LoadingData from '@/components/LoadingData.vue';
 import useQuestionCharger from '@/use/use-charge-question.js';
@@ -107,7 +107,7 @@ export default {
     let itemRef = [];
     const questions = ref([]); //getQuestionMock();
     const category = ref('');
-    const loadingData = ref(true)
+    const loadingData = ref(true);
 
     const loadQuestion = () => {
       canClick = true;
@@ -127,8 +127,7 @@ export default {
     // lifecycle hooks
     onMounted(() => {
       const route = useRoute();
-      const cate =  route.path.replace("/", "");
-      console.log('category ', cate)
+      const cate = route.path.replace('/', '');
       category.value = cate;
       //2. fetch questions from server
       fetchQuestionsFromServer(category.value);
@@ -152,9 +151,10 @@ export default {
         .then(data => {
           questions.value = data;
           loadQuestion();
-          countDownTimer(); })
-        .catch( error => console.error(error) )
-        .finally( () => loadingData.value = false )
+          countDownTimer();
+        })
+        .catch(error => console.error(error))
+        .finally(() => (loadingData.value = false));
     };
 
     const onQuizEnd = function () {
@@ -223,24 +223,24 @@ export default {
       }
     };
 
-    const getCategory = computed(() => category.value.replace("-", " ").toUpperCase());
+    const getCategory = computed(() => category.value.replace('-', ' ').toUpperCase());
 
     // return
     return {
-      timer,
-      optionChosen,
       currentQuestion,
-      questions,
-      score,
-      questionCounter,
+      endOfQuiz,
+      getCategory,
+      loadingData,
       loadQuestion,
       onOptionClicked,
       onQuizStart,
-      endOfQuiz,
+      optionChosen,
       percentageScore,
-      undecodeText,
-      getCategory,
-      loadingData
+      questionCounter,
+      questions,
+      score,
+      timer,
+      undecodeText
     };
   },
   computed: {
