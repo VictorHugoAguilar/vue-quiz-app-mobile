@@ -114,19 +114,28 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 400px;
-    height: 520px;
+    width: 375px;
+    height: 500px;
   }
 
   .quiz-complete-container {
-    border: thin solid red;
-    height: 60%;
-    margin-top: 32%;
+    height: 58%;
+    margin-top: 35%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-
+  .title-main {
+    padding: 10px;
+    height: 70px;
+    font-family: 'Rocher';
+    text-align: center;
+    font-size: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>

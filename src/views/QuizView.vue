@@ -7,15 +7,14 @@
     <!-- end loading data -->
 
     <!-- Quiz overlay -->
-    <QuizCompleteOverlay :percent="percentageScore" @restartQuiz="onQuizStart" />
+    <QuizCompleteOverlay v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
     <!-- end quiz overlay -->
-    <!--  v-if="endOfQuiz" -->
 
     <!-- quiz container -->
-    <div class="overflow-hidden container relative px-4 py-4 background-image">
+    <div class="overflow-hidden container background-image">
 
       <!-- contents -->
-      <div class="relative z-20">
+      <div class="body-contents z-20">
 
         <!-- header quiz -->
         <div class="flex justify-between header">
@@ -37,32 +36,35 @@
           <div class="timer-container-internal  rounded-full w-11/12 h-full" :style="`width:${timer}%`"></div>
         </div>
 
-        <!-- question container -->
-        <div class="rounded-lg border-option p-2 neumorph-1 text-center font-bold text-gray-800 mt-8">
-          <div class="background-option p-5">{{ formattedQuestion }}</div>
-        </div>
+        <div class="contents-quiz">
 
-        <!-- options container -->
-        <div class="mt-8 options-container">
-          <div v-for="(choice, item) in currentQuestion.choices" :key="item">
-            <!-- option container -->
-            <div class="neumorph-1 option-default border-option p-2 rounded-lg mb-3 relative" :ref="optionChosen"
-              @click="onOptionClicked(choice, item)">
-              <div
-                class="bg-blue-500 p-1 transform rotate-45 rounded-md h-10 w-10 text-white font-bold absolute right-0 -top-0 shadow-md">
-                <p class="transform -rotate-45">+10</p>
-              </div>
-              <div class="rounded-lg font-bold flex p-2 background-option ">
-                <!-- option id -->
-                <div class="p-3 rounded-lg">
-                  {{ item }}
+          <!-- question container -->
+          <div class="rounded-lg border-option p-2 neumorph-1 text-center font-bold mt-4">
+            <div class="background-option p-2">{{ formattedQuestion }}</div>
+          </div>
+
+          <!-- options container -->
+          <div class="options-container">
+            <div v-for="(choice, item) in currentQuestion.choices" :key="item">
+              <!-- option container -->
+              <div class="neumorph-1 option-default border-option p-1 rounded-lg mb-3 relative" :ref="optionChosen"
+                @click="onOptionClicked(choice, item)">
+                <div
+                  class="bg-blue-500 p-1 transform rotate-45 rounded-md h-10 w-10 text-white font-bold absolute right-0 -top-0 shadow-md">
+                  <p class="transform -rotate-45">+10</p>
                 </div>
-                <div class="flex items-center pl-6 choice">
-                  {{ undecodeText(choice) }}
+                <div class="rounded-lg font-bold flex p-2 background-option ">
+                  <!-- option id -->
+                  <div class="p-3 rounded-lg">
+                    {{ item }}
+                  </div>
+                  <div class="flex items-center pl-6 choice">
+                    {{ undecodeText(choice) }}
+                  </div>
                 </div>
               </div>
+              <!-- end option container -->
             </div>
-            <!-- end option container -->
           </div>
         </div>
 
@@ -145,7 +147,7 @@ export default {
           onQuizEnd();
           clearInterval(interVal);
         }
-      }, 150);
+      }, 99150);
     };
 
     const fetchQuestionsFromServer = async function (category) {
@@ -261,7 +263,19 @@ export default {
   min-height: 800px;
   max-height: 800px;
   border-radius: 25px;
-  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contents-quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
+  width: 90%;
+  padding: 20px;
 }
 
 .background-image {
@@ -281,6 +295,9 @@ export default {
 }
 
 .header {
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
   height: 100px;
 }
 
@@ -313,6 +330,11 @@ export default {
   color: var(--c6) !important;
 }
 
+.options-container {
+  padding: 15px;
+  font-size: medium;
+}
+
 .choice {
   margin-left: 5px;
   border-radius: 10px;
@@ -320,9 +342,9 @@ export default {
 }
 
 .footer-quiz {
-  position: absolute;
-  bottom: 10px;
-  right: 220px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .image-footer {
@@ -337,5 +359,58 @@ export default {
 
 .text-footer {
   color: var(--c6);
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .background-image {
+    background-image: url('@/assets/svg/background_quiz_menu_movil.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .container {
+    min-width: 375px;
+    max-width: 500px;
+    height: 100vh;
+    border-radius: 25px;
+    background-color: var(--c6);
+  }
+
+  .header {
+    margin-top: 70px;
+    display: flex;
+    height: 100px;
+  }
+
+  .contents-quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+    width: 90%;
+    padding: 0px 10px;
+  }
+
+  .options-container {
+    font-size: smaller;
+    padding: 10px;
+  }
+
+  .choice {
+    margin-left: 5px;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .footer-quiz {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+  }
 }
 </style>
