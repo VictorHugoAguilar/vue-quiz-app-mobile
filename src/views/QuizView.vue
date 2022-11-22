@@ -1,6 +1,6 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <main class="flex h-screen items-center justify-center bg-gray-800">
+  <main class="flex h-screen items-center justify-center bg-gray-900">
 
     <!-- Loading data -->
     <LoadingData v-if="loadingData" />
@@ -19,7 +19,7 @@
         <!-- header quiz -->
         <div class="flex justify-between header">
           <!-- score container -->
-          <div class="mt-10 ml-12 text-left text-header-category">
+          <div class="text-header-category">
             <p class="text-sm leading-3">Category Selected</p>
             <p class="font-bold">{{ getCategory }}</p>
           </div>
@@ -147,7 +147,7 @@ export default {
           onQuizEnd();
           clearInterval(interVal);
         }
-      }, 99150);
+      }, 150);
     };
 
     const fetchQuestionsFromServer = async function (category) {
@@ -306,6 +306,9 @@ export default {
 }
 
 .text-header-category {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  text-align: left;
   color: var(--c6);
 }
 
@@ -376,7 +379,6 @@ export default {
     min-width: 375px;
     max-width: 500px;
     height: 100vh;
-    border-radius: 25px;
     background-color: var(--c6);
   }
 
@@ -408,9 +410,8 @@ export default {
   }
 
   .footer-quiz {
-    position: fixed;
-    bottom: 60px;
-    right: 145px;
+    display: flex;
+    margin-bottom: 50px;
   }
 }
 </style>
