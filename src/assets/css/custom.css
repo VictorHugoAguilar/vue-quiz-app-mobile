@@ -15,6 +15,10 @@
   --c5: #ffcd00;
   --c6: #4b220b;
   --shine-angle: 15deg;
+  /* Do not allow select text */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .option-default {

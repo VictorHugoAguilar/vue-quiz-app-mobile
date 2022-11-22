@@ -8,7 +8,7 @@
     <QuizCompleteOverlay class="quiz-complete" v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
     <!-- end quiz overlay -->
     <!-- quiz container -->
-    <div class="overflow-hidden container background-image">
+    <div class="overflow-hidden container background-image" >
       <!-- contents -->
       <div class="body-contents z-20">
         <!-- header quiz -->

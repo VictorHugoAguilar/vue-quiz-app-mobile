@@ -169,7 +169,7 @@ button:after {
 button:before {
   background-color: #ff1731;
 }
-
+/* desktop hover */
 button:hover {
   background-color: #fff65b;
   transition: background 0.3s 0.1s;
