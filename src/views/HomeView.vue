@@ -94,23 +94,15 @@ export default {
   justify-content: center;
 }
 
-.grays {
-  font-palette: --Grays;
-}
-
 .purples {
   font-palette: --Purples;
-}
-
-.mint {
-  font-palette: --Mint;
 }
 
 .container-list {
   width: 400px;
   margin: 0 auto;
   position: relative;
-  perspective: 400px;
+  perspective: 500px;
 }
 
 .container-list-buttons {
@@ -169,6 +161,7 @@ button:after {
 button:before {
   background-color: #ff1731;
 }
+
 /* desktop hover */
 button:hover {
   background-color: #fff65b;
