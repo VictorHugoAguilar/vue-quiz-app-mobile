@@ -94,6 +94,7 @@ export default {
   }
 
   .container-main-title {
+    margin-top: 60px !important;
     border: thin solid blue;
     height: 80px;
     width: 100%;
@@ -109,7 +110,7 @@ export default {
   .container-list-buttons {
     border: thin solid yellow;
     padding: 10px;
-    margin-top: -30px;
+    margin-top: -10px;
   }
 
   .button-option {
@@ -119,10 +120,6 @@ export default {
     perspective: 300px;
     font-size: 0.9em;
   }
-
-  .container-main-title {
-    margin-top: 10px;
-  }
 }
 
 .neumorph-1 {
@@ -130,7 +127,7 @@ export default {
 }
 
 .container-main-title {
-  margin-top: 130px;
+  margin-top: 120px;
   min-height: -webkit-fill-available;
   display: grid;
   place-content: center;
