@@ -1,21 +1,16 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
   <main class="flex h-screen items-center justify-center bg-gray-800">
-
     <!-- Loading data -->
     <LoadingData v-if="loadingData" />
     <!-- end loading data -->
-
     <!-- Quiz overlay -->
     <QuizCompleteOverlay class="quiz-complete" v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
     <!-- end quiz overlay -->
-
     <!-- quiz container -->
     <div class="overflow-hidden container background-image">
-
       <!-- contents -->
       <div class="body-contents z-20">
-
         <!-- header quiz -->
         <div class="flex justify-between header">
           <!-- score container -->
@@ -30,21 +25,21 @@
           </div>
         </div>
         <!-- end header quiz -->
-
         <!-- timer container -->
         <div class="timer-container bg-white shadow-lg p-1 rounded-full w-full h-5 mt-4">
           <div class="timer-container-internal  rounded-full w-11/12 h-full" :style="`width:${timer}%`"></div>
         </div>
-
+        <!-- end timer container -->
+        <!-- contents quiz -->
         <div class="contents-quiz">
-
           <!-- question container -->
           <div class="rounded-lg border-option p-2 neumorph-1 text-center font-bold mt-4">
             <div class="background-option p-2">{{ formattedQuestion }}</div>
           </div>
-
+          <!-- end question container -->
           <!-- options container -->
           <div class="options-container">
+            <!-- options -->
             <div v-for="(choice, item) in currentQuestion.choices" :key="item">
               <!-- option container -->
               <div class="neumorph-1 option-default border-option p-1 rounded-lg mb-3 relative" :ref="optionChosen"
@@ -65,20 +60,23 @@
               </div>
               <!-- end option container -->
             </div>
+            <!-- end options -->
           </div>
+          <!-- end options container -->
         </div>
-
+        <!-- end contents quiz -->
       </div>
-
       <!-- footer quiz -->
       <div class="footer-quiz">
         <!-- progress indicator container -->
         <div class="text-center image-footer">
           <p class="font-bold text-footer">{{ questionCounter }}/{{ questions.length }}</p>
         </div>
+        <!-- end progress indicator container -->
       </div>
       <!-- end footer quiz -->
     </div>
+    <!-- end quiz container -->
   </main>
 </template>
 

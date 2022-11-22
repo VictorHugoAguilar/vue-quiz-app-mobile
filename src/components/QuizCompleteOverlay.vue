@@ -1,30 +1,43 @@
 <template>
   <div class="w-screen h-screen absolute z-30 bg-white bg-opacity-60 flex justify-center items-center">
+    <!-- image container -->
     <div class="text-center background-image container">
+      <!-- container quiz complete -->
       <div class="quiz-complete-container">
+        <!-- title -->
         <div class="title-main">
           <h1 class="purples">SCORE</h1>
         </div>
+        <!-- end title -->
+        <!-- percent -->
         <div class="title-main">
           <h1 class="score-text mint">{{ percent }} %</h1>
         </div>
-        <!-- buttons -->
+        <!-- percent -->
+        <!-- buttons options-->
         <div class="options flex justify-beetween justify-center items-center">
+          <!-- option exit -->
           <div class="py-1 w-28 cursor-pointer hover:text-black mr-4" @click="goToMain()">
             <div class="option">
               <img class="button-option" src="@/assets/svg/button-exit-main-menu.svg" alt="buton_exit_main_menu" />
               <span class="option-text">Back to Main</span>
             </div>
           </div>
+          <!-- end option exit -->
+          <!-- option play again -->
           <div class="py-1 w-28 cursor-pointer hover:text-black" @click="$emit('restartQuiz')">
             <div class="option">
               <img class="button-option" src="@/assets/svg/button-retry-again.svg" alt="button_retry_again" />
               <span class="option-text">Play Again</span>
             </div>
           </div>
+          <!-- end option play again -->
         </div>
+        <!-- end buttons options-->
       </div>
+      <!-- end container quiz complete -->
     </div>
+    <!-- end image container -->
   </div>
 </template>
 
@@ -46,6 +59,7 @@ export default {
 .container {
   filter: drop-shadow(5px 5px 5px var(--c3));
 }
+
 .background-image {
   background-image: url('@/assets/svg/background_image_score.svg');
   background-repeat: no-repeat;
@@ -81,7 +95,7 @@ export default {
 }
 
 .option-text {
-  color: rgb(72 38 16);
+  color: var(--c6);
 }
 
 .title-main {
@@ -111,6 +125,7 @@ h1 {
   font-palette: --Mint;
 }
 
+/* CUSTOM STYLES MOVIL */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
   .background-image {
     background-image: url('@/assets/svg/background_image_score_movil.svg');

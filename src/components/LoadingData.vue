@@ -1,15 +1,22 @@
 <template>
   <div class="w-screen h-screen absolute z-30 bg-black bg-opacity-60 flex justify-center items-center">
+    <!-- container image -->
     <div class="p-6 text-center text-white rounded-lg background-image">
       <div class="text-center status">
+        <!-- content loading -->
         <div class="image-loading-container">
           <img class="image-loading animate-button w-30" src="@/assets/svg/button-exit-main-menu.svg" alt="spinner" />
         </div>
+        <!-- end spinner -->
+        <!-- message spinner -->
         <div class="title-main">
           <h1 class="score-text purples">Loading...</h1>
         </div>
+        <!-- end message spinner -->
       </div>
+      <!-- end content loading -->
     </div>
+    <!-- end container image -->
   </div>
 </template>
 <script>
