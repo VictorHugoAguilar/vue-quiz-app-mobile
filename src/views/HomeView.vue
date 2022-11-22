@@ -6,7 +6,7 @@
     <div class="overflow-hidden container background-image">
 
       <!-- contents -->
-      <div class="content relative z-20">
+      <div class="content z-20">
 
         <!-- main title -->
         <div class="container-main-title">
@@ -74,54 +74,6 @@ export default {
   background-position: center;
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
-  .container {
-    width: 82%;
-    height: 100vh;
-  }
-
-  .background-image {
-    background-image: url('@/assets/svg/background_main_menu_movil.svg');
-  }
-
-  .content {
-    border: thin solid red;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    padding: 0px 0px !important;
-    justify-content: flex-start;
-    justify-items: center;
-  }
-
-  .container-main-title {
-    margin-top: 120px !important;
-    border: thin solid blue;
-    height: 80px;
-    width: 100%;
-  }
-
-  .container-list {
-    width: 80% !important;
-    perspective: 300px;
-    border: thin solid green;
-  }
-
-  .container-list-buttons {
-    border: thin solid yellow;
-    padding: 10px;
-    margin-top: -10px;
-  }
-
-  .button-option {
-    margin: 0.2em 0;
-    padding: 0.8em 0.5em;
-    cursor: pointer;
-    perspective: 300px;
-    font-size: 0.9em;
-  }
-}
 
 .neumorph-1 {
   box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.09), -6px -6px 18px #ffffff;
@@ -359,6 +311,55 @@ button:hover:after {
   100% {
     opacity: 1;
     transform: translate3d(calc(var(--z) * 100px), calc(var(--z) * 100px), calc(var(--z) * 100px));
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .container {
+    width: 82%;
+    height: 100vh;
+  }
+
+  .background-image {
+    background-image: url('@/assets/svg/background_main_menu_movil.svg');
+  }
+
+  .content {
+    border: thin solid red;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding: 0px !important;
+    justify-content: flex-start;
+    justify-items: center;
+  }
+
+  .container-main-title {
+    margin-top: 120px !important;
+    border: thin solid blue;
+    height: 80px;
+    width: 100%;
+  }
+
+  .container-list {
+    width: 80% !important;
+    perspective: 300px;
+    border: thin solid green;
+  }
+
+  .container-list-buttons {
+    border: thin solid yellow;
+    padding: 10px;
+    margin-top: -10px;
+  }
+
+  .button-option {
+    margin: 0.2em 0;
+    padding: 0.8em 0.5em;
+    cursor: pointer;
+    perspective: 300px;
+    font-size: 0.9em;
   }
 }
 </style>
