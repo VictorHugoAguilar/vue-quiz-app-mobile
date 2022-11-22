@@ -1,6 +1,6 @@
 <template>
-  <div class="w-screen h-screen absolute z-30 bg-black bg-opacity-60 flex justify-center items-center">
-    <div class="text-center background-image">
+  <div class="w-screen h-screen absolute z-30 bg-white bg-opacity-60 flex justify-center items-center">
+    <div class="text-center background-image container">
       <div class="quiz-complete-container">
         <div class="title-main">
           <h1 class="purples">SCORE</h1>
@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  filter: drop-shadow(5px 5px 5px var(--c3));
+}
 .background-image {
   background-image: url('@/assets/svg/background_image_score.svg');
   background-repeat: no-repeat;

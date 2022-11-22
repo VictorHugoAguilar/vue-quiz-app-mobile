@@ -1,13 +1,10 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
   <main class="flex h-screen items-center justify-center bg-gray-800">
-
-    <!-- quiz container -->
+    <!-- quiz image container -->
     <div class="overflow-hidden container background-image">
-
       <!-- contents -->
       <div class="content z-20">
-
         <!-- main title -->
         <div class="container-main-title">
           <div class="title-main">
@@ -15,7 +12,7 @@
           </div>
         </div>
         <!-- end main title -->
-
+        <!-- content list categories -->
         <div class="container-list">
           <div class="container-list-buttons">
             <button class="button-option" v-for="category of categories" :key="category" @click="gotTo(category)">
@@ -23,10 +20,11 @@
             </button>
           </div>
         </div>
-
+        <!-- content list categories -->
       </div>
-      <!-- end quiz container -->
+      <!-- end contents -->
     </div>
+    <!-- end image container -->
   </main>
 </template>
 

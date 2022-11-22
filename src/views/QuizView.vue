@@ -1,13 +1,13 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <main class="flex h-screen items-center justify-center bg-gray-900">
+  <main class="flex h-screen items-center justify-center bg-gray-800">
 
     <!-- Loading data -->
     <LoadingData v-if="loadingData" />
     <!-- end loading data -->
 
     <!-- Quiz overlay -->
-    <QuizCompleteOverlay v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
+    <QuizCompleteOverlay class="quiz-complete" v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
     <!-- end quiz overlay -->
 
     <!-- quiz container -->
