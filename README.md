@@ -5,7 +5,7 @@ Trivia game, with different categories
 ## Demo App
 
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-  <img style="width:30%" src="https://raw.githubusercontent.com/VictorHugoAguilar/vue-quiz-app-mobile/main/demo/Main_Menu.jpg" alt="main menu" />
+  <img style="width:30%" src="https://raw.githubusercontent.com/VictorHugoAguilar/vue-quiz-app-mobile/main/demo/Main_Menu_Game.jpg" alt="main menu" />
   <img style="width:30%" src="https://raw.githubusercontent.com/VictorHugoAguilar/vue-quiz-app-mobile/main/demo/Game.jpg" alt="main menu" />
   <img style="width:30%" src="https://raw.githubusercontent.com/VictorHugoAguilar/vue-quiz-app-mobile/main/demo/Finished_Game.jpg" alt="main menu" />
 </div>
