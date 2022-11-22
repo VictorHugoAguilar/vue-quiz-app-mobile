@@ -53,9 +53,9 @@
                   class="bg-blue-500 p-1 transform rotate-45 rounded-md h-10 w-10 text-white font-bold absolute right-0 -top-0 shadow-md">
                   <p class="transform -rotate-45">+10</p>
                 </div>
-                <div class="rounded-lg font-bold flex p-2 background-option ">
+                <div class="rounded-lg font-bold flex p-2 background-option">
                   <!-- option id -->
-                  <div class="p-3 rounded-lg">
+                  <div class="p-3 rounded-lg index-choice">
                     {{ item }}
                   </div>
                   <div class="flex items-center pl-6 choice">
@@ -329,8 +329,8 @@ export default {
 }
 
 .background-option {
-  background-color: var(--c1) !important;
-  color: var(--c6) !important;
+  background-color: var(--c1);
+  color: var(--c6);
 }
 
 .options-container {

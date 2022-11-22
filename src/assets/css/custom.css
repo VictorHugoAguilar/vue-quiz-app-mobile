@@ -27,17 +27,16 @@
 
 .option-default div:nth-child(2) div:nth-child(1) {
   @apply inline;
-  background-color: var(--c1);
-  color: var(--c6)
+  background-color: var(--c2);
+  color: var(--c6);
 }
 
 .option-default div:nth-child(2) {
   @apply text-gray-800;
-  color: var(--c6)
+  color: var(--c6);
 }
 
 /* wrong custom class */
-
 .option-wrong {
   @apply cursor-pointer;
 }
