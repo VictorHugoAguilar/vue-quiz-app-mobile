@@ -290,7 +290,7 @@ button:hover:after {
 
   .container-list {
     width: 80% !important;
-    margin-top: 70px;
+    margin-top: 5px;
     perspective: 300px;
   }
 
@@ -301,10 +301,10 @@ button:hover:after {
 
   .button-option {
     margin: 0.2em 0;
-    padding: 0.8em 0.5em;
+    padding: 0.5em 0.5em;
     cursor: pointer;
     perspective: 300px;
-    font-size: 0.9em;
+    font-size: 1.1em;
   }
 }
 </style>
