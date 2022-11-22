@@ -282,32 +282,32 @@ export default {
 }
 
 .text-header-score {
-  color: var(--c0);
+  color: var(--c6);
 }
 
 .text-header-category {
-  color: var(--c0);
+  color: var(--c6);
 }
 
 .neumorph-1 {
-  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.09), -6px -6px 18px var(--c2);
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.09), -6px -6px 18px var(--c1);
 }
 
 .timer-container {
-  background-color: var(--c1);
+  background-color: var(--c3);
 }
 
 .timer-container-internal {
-  background-color: var(--c2);
-}
-
-.border-option {
   background-color: var(--c1);
 }
 
+.border-option {
+  background-color: var(--c3);
+}
+
 .background-option {
-  background-color: var(--c2) !important;
-  color: var(--c0) !important;
+  background-color: var(--c1) !important;
+  color: var(--c6) !important;
 }
 
 .choice {
@@ -333,6 +333,6 @@ export default {
 }
 
 .text-footer {
-  color: var(--c0);
+  color: var(--c6);
 }
 </style>

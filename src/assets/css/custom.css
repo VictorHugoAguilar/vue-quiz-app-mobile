@@ -1,8 +1,20 @@
 /* Custom */
+@font-face {
+  font-family: 'Rocher';
+  src: url('@/assets/font/RocherColorGX.woff2');
+}
+
 * {
-  --c0: #482610;
-  --c1: #e16c00;
-  --c2: #f8c638;
+  /* box-sizing: border-box; */
+  --t: rgba(104, 8, 8, 0);
+  --w: #ffe300;
+  --c1: #ffcd00;
+  --c2: #fda000;
+  --c3: #e57400;
+  --c4: #fda000;
+  --c5: #ffcd00;
+  --c6: #4b220b;
+  --shine-angle: 15deg;
 }
 
 .option-default {
@@ -16,12 +28,12 @@
 .option-default div:nth-child(2) div:nth-child(1) {
   @apply inline;
   background-color: var(--c1);
-  color: var(--c0)
+  color: var(--c6)
 }
 
 .option-default div:nth-child(2) {
   @apply text-gray-800;
-  color: var(--c0)
+  color: var(--c6)
 }
 
 /* wrong custom class */

@@ -81,11 +81,6 @@ export default {
   color: rgb(72 38 16);
 }
 
-@font-face {
-  font-family: 'Rocher';
-  src: url('@/assets/font/RocherColorGX.woff2');
-}
-
 .title-main {
   font-family: 'Rocher';
   text-align: center;
