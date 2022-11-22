@@ -75,7 +75,6 @@ export default {
 }
 
 .container-main-title {
-  border: thin solid purple;
   margin-top: 150px;
   height: 100px;
   min-height: -webkit-fill-available;
@@ -261,7 +260,6 @@ button:hover:after {
   }
 
   .content {
-    border: thin solid red;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -275,7 +273,6 @@ button:hover:after {
     display: flex;
     flex-direction: column-reverse;
     margin-top: 75px;
-    border: thin solid blue;
     height: 80px;
     width: 100%;
   }
@@ -283,7 +280,7 @@ button:hover:after {
   .title-main {
     font-family: 'Rocher';
     text-align: center;
-    font-size: 60px;
+    font-size: 65px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -293,13 +290,11 @@ button:hover:after {
 
   .container-list {
     width: 80% !important;
-    margin-top: 40px;
+    margin-top: 70px;
     perspective: 300px;
-    border: thin solid green;
   }
 
   .container-list-buttons {
-    border: thin solid yellow;
     padding: 10px;
     margin-top: -10px;
   }
