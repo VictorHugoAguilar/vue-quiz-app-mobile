@@ -408,9 +408,9 @@ export default {
   }
 
   .footer-quiz {
-    display: flex;
-    justify-content: center;
-    height: 150px;
+    position: fixed;
+    bottom: 60px;
+    right: 145px;
   }
 }
 </style>
