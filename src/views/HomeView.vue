@@ -80,7 +80,9 @@ export default {
 }
 
 .container-main-title {
-  margin-top: 120px;
+  border: thin solid purple;
+  margin-top: 150px;
+  height: 100px;
   min-height: -webkit-fill-available;
   display: grid;
   place-content: center;
@@ -92,7 +94,7 @@ export default {
 .title-main {
   font-family: 'Rocher';
   text-align: center;
-  font-size: 70px;
+  font-size: 100px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -340,6 +342,17 @@ button:hover:after {
     border: thin solid blue;
     height: 80px;
     width: 100%;
+  }
+
+  .title-main {
+    font-family: 'Rocher';
+    text-align: center;
+    font-size: 70px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .container-list {
