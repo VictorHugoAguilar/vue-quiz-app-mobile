@@ -338,7 +338,7 @@ button:hover:after {
   }
 
   .container-main-title {
-    margin-top: 120px !important;
+    margin-top: 80px;
     border: thin solid blue;
     height: 80px;
     width: 100%;
@@ -347,7 +347,7 @@ button:hover:after {
   .title-main {
     font-family: 'Rocher';
     text-align: center;
-    font-size: 70px;
+    font-size: 60px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -357,6 +357,7 @@ button:hover:after {
 
   .container-list {
     width: 80% !important;
+    margin-top: 40px;
     perspective: 300px;
     border: thin solid green;
   }
