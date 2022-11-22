@@ -11,6 +11,14 @@ export default async function (category) {
       return res.json();
     })
     .then(data => {
+      // const preguntas = {};
+      // data.results.forEach(element => {
+      //   const pregunta = {};
+      //   pregunta.respuestas = [...element.incorrect_answers].join(', ');
+      //   pregunta.respuesta = element.correct_answer;
+      //   preguntas[element.question] = pregunta;
+      // });
+      // console.table(preguntas);
       // map json to fit our own arrangement
       const newQuestions = data.results.map(serverQuestion => {
         const totalAnswers = serverQuestion.incorrect_answers.length + 1;
