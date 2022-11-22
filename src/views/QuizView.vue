@@ -4,9 +4,12 @@
 
     <!-- Loading data -->
     <LoadingData v-if="loadingData" />
+    <!-- end loading data -->
 
     <!-- Quiz overlay -->
-    <QuizCompleteOverlay v-if="endOfQuiz" :percent="percentageScore" @restartQuiz="onQuizStart" />
+    <QuizCompleteOverlay :percent="percentageScore" @restartQuiz="onQuizStart" />
+    <!-- end quiz overlay -->
+    <!--  v-if="endOfQuiz" -->
 
     <!-- quiz container -->
     <div class="overflow-hidden container relative px-4 py-4 background-image">

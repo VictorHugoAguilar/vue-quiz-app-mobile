@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen h-screen absolute z-30 bg-black bg-opacity-60 flex justify-center items-center">
-    <div class="text-center text-white rounded-lg background-image">
+    <div class="text-center background-image">
       <div class="quiz-complete-container">
         <div class="title-main">
           <h1 class="purples">SCORE</h1>
@@ -100,30 +100,33 @@ h1 {
   margin: 0;
 }
 
-@font-palette-values --Grays {
-  font-family: Rocher;
-  base-palette: 9;
-}
-
-@font-palette-values --Purples {
-  font-family: Rocher;
-  base-palette: 11;
-}
-
-@font-palette-values --Mint {
-  font-family: Rocher;
-  base-palette: 1;
-}
-
-.grays {
-  font-palette: --Grays;
-}
-
 .purples {
   font-palette: --Purples;
 }
 
 .mint {
   font-palette: --Mint;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .background-image {
+    background-image: url('@/assets/svg/background_image_score_movil.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 400px;
+    height: 520px;
+  }
+
+  .quiz-complete-container {
+    border: thin solid red;
+    height: 60%;
+    margin-top: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+
 }
 </style>

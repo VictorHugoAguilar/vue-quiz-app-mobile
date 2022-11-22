@@ -3,7 +3,7 @@
     <div class="p-6 text-center text-white rounded-lg background-image">
       <div class="text-center status">
         <div class="image-loading-container">
-          <img class="image-loading animate-button w-40" src="@/assets/svg/button-exit-main-menu.svg" alt="spinner" />
+          <img class="image-loading animate-button w-30" src="@/assets/svg/button-exit-main-menu.svg" alt="spinner" />
         </div>
         <div class="title-main">
           <h1 class="score-text purples">Loading...</h1>
@@ -57,11 +57,6 @@ export default {
   height: 520px;
 }
 
-@font-face {
-  font-family: 'Rocher';
-  src: url('@/assets/font/RocherColorGX.woff2');
-}
-
 .title-main {
   font-family: 'Rocher';
   text-align: center;
@@ -77,30 +72,34 @@ h1 {
   margin: 0;
 }
 
-@font-palette-values --Grays {
-  font-family: Rocher;
-  base-palette: 9;
-}
-
-@font-palette-values --Purples {
-  font-family: Rocher;
-  base-palette: 11;
-}
-
-@font-palette-values --Mint {
-  font-family: Rocher;
-  base-palette: 1;
-}
-
-.grays {
-  font-palette: --Grays;
-}
-
 .purples {
   font-palette: --Purples;
 }
 
-.mint {
-  font-palette: --Mint;
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .background-image {
+    background-image: url('@/assets/svg/background_image_loading_movil.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 300px;
+    height: 500px;
+  }
+
+  .status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    width: 250px;
+    height: 400px;
+  }
+
+  .title-main {
+    font-family: 'Rocher';
+    text-align: center;
+    font-size: 35px;
+    height: 100vh;
+  }
 }
 </style>

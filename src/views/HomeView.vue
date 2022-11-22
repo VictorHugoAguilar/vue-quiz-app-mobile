@@ -289,8 +289,8 @@ button:hover:after {
   }
 
   .container-list {
-    width: 80% !important;
-    margin-top: 5px;
+    width: 80%;
+    margin-top: 10px;
     perspective: 300px;
   }
 
