@@ -71,3 +71,20 @@
 .option-correct div:nth-child(2) {
   @apply bg-green-600 text-white;
 }
+
+/* CUSTOM FONT */
+
+@font-palette-values --Grays {
+  font-family: Rocher;
+  base-palette: 9;
+}
+
+@font-palette-values --Purples {
+  font-family: Rocher;
+  base-palette: 11;
+}
+
+@font-palette-values --Mint {
+  font-family: Rocher;
+  base-palette: 1;
+}

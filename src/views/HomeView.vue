@@ -74,11 +74,6 @@ export default {
   background-position: center;
 }
 
-
-.neumorph-1 {
-  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.09), -6px -6px 18px #ffffff;
-}
-
 .container-main-title {
   border: thin solid purple;
   margin-top: 150px;
@@ -102,21 +97,6 @@ export default {
   justify-content: center;
 }
 
-@font-palette-values --Grays {
-  font-family: Rocher;
-  base-palette: 9;
-}
-
-@font-palette-values --Purples {
-  font-family: Rocher;
-  base-palette: 11;
-}
-
-@font-palette-values --Mint {
-  font-family: Rocher;
-  base-palette: 1;
-}
-
 .grays {
   font-palette: --Grays;
 }
@@ -127,52 +107,6 @@ export default {
 
 .mint {
   font-palette: --Mint;
-}
-
-.sticker {
-  display: inline-grid;
-  grid-template-areas: 'text';
-  place-items: center;
-  font-family: 'Alegreya Sans SC', sans-serif;
-  font-weight: 900;
-  font-style: italic;
-  font-size: clamp(3rem, 15vw, 8rem);
-  text-transform: uppercase;
-  color: var(--c5);
-}
-
-.sticker-lg {
-  font-size: clamp(3rem, 15vw, 8rem);
-}
-
-.sticker-lg span {
-  background: linear-gradient(var(--shine-angle), var(--t) 0%, var(--t) 35%, var(--w) 49.95%, var(--w) 50.15%, var(--t) 65%, var(--t)),
-    linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 0.02em rgba(0, 0, 0, 0.6);
-}
-
-.sticker>*,
-.sticker::before,
-.sticker::after {
-  grid-area: text;
-}
-
-.sticker::before,
-.sticker::after {
-  content: attr(data-text);
-  color: #fff;
-}
-
-.sticker::before {
-  -webkit-text-stroke: 0.21em white;
-  background: no-repeat linear-gradient(white, white) 15% 50% / 85% 60%;
-}
-
-.sticker::after {
-  text-shadow: 0.07em 0.08em 0.05em rgba(0, 0, 0, 0.75), -0.07em -0.05em 0.05em rgba(0, 0, 0, 0.75);
-  z-index: -2;
 }
 
 .container-list {
@@ -338,7 +272,9 @@ button:hover:after {
   }
 
   .container-main-title {
-    margin-top: 80px;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 75px;
     border: thin solid blue;
     height: 80px;
     width: 100%;
