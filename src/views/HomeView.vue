@@ -1,9 +1,9 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <main class="flex h-screen items-center justify-center bg-gray-800 ">
+  <main class="flex h-screen items-center justify-center bg-gray-800">
 
     <!-- quiz container -->
-    <div class="overflow-hidden bg-white container relative px-12 py-6 min-h-540 background-image">
+    <div class="overflow-hidden container background-image">
 
       <!-- contents -->
       <div class="relative z-20">
@@ -14,9 +14,9 @@
         </div>
         <!-- end main title -->
 
-        <div class="container-list mt-10">
+        <div class="container-list">
           <div class="container-list-buttons">
-            <button v-for="category of categories" :key="category" @click="gotTo(category)">
+            <button class="button-option" v-for="category of categories" :key="category" @click="gotTo(category)">
               {{ formatSnakeCaseToUpperCase(category) }}
             </button>
           </div>
@@ -57,14 +57,12 @@ export default {
 
 <style scoped>
 .container {
-  min-width: 500px;
-  max-width: 540px;
-  min-height: 850px;
-  border-radius: 25px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 500px;
+  height: 850px;
 }
 
 .background-image {
@@ -72,7 +70,40 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  width: 500px;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .container {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .background-image {
+    background-image: url('@/assets/svg/background_main_menu_movil.svg');
+  }
+
+  .container-main-title {
+    margin-top: 100px;
+  }
+
+  .container-list {
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    perspective: 300px;
+  }
+
+  .container-list-buttons {
+    padding: 10%;
+  }
+
+  .button-option {
+    margin: 0.6em 0;
+    padding: 1em 1.2em;
+    cursor: pointer;
+    perspective: 300px;
+    font-size: 1.1em;
+  }
 }
 
 .neumorph-1 {
@@ -80,7 +111,7 @@ export default {
 }
 
 .container-main-title {
-  margin-top: 100px;
+  margin-top: 130px;
   min-height: -webkit-fill-available;
   display: grid;
   place-content: center;
@@ -126,7 +157,7 @@ export default {
   -webkit-text-stroke: 0.02em rgba(0, 0, 0, 0.6);
 }
 
-.sticker > *,
+.sticker>*,
 .sticker::before,
 .sticker::after {
   grid-area: text;
@@ -148,13 +179,15 @@ export default {
   z-index: -2;
 }
 
-container-list {
+.container-list {
+  width: 400px;
+  margin: 0 auto;
   position: relative;
-  margin: auto;
-  perspective: 500px;
+  perspective: 400px;
 }
 
 .container-list-buttons {
+  padding: 10%;
   display: flex;
   flex-direction: column;
   transform: rotatex(10deg);
@@ -166,7 +199,7 @@ button {
   display: block;
   position: relative;
   margin: 0.5em 0;
-  padding: 0.8em 2.2em;
+  padding: 0.8em 1.2em;
   cursor: pointer;
 
   background: linear-gradient(var(--shine-angle), var(--t) 0%, var(--t) 35%, var(--w) 49.95%, var(--w) 50.15%, var(--t) 65%, var(--t)),
@@ -175,7 +208,7 @@ button {
   border-radius: 0.4em;
 
   text-transform: uppercase;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   letter-spacing: 0.04em;
