@@ -6,7 +6,7 @@
     <div class="overflow-hidden container background-image">
 
       <!-- contents -->
-      <div class="relative z-20">
+      <div class="content relative z-20">
 
         <!-- main title -->
         <div class="container-main-title">
@@ -74,7 +74,7 @@ export default {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
   .container {
-    width: 100%;
+    width: 80%;
     height: 100vh;
   }
 
@@ -82,27 +82,46 @@ export default {
     background-image: url('@/assets/svg/background_main_menu_movil.svg');
   }
 
+  .content {
+    border: thin solid red;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding: 0px 0px !important;
+    justify-content: flex-start;
+    justify-items: center;
+  }
+
   .container-main-title {
-    margin-top: 100px;
+    border: thin solid blue;
+    height: 80px;
+    width: 100%;
+    justify-content: center;
   }
 
   .container-list {
-    width: 300px;
-    margin: 0 auto;
-    position: relative;
+    width: 80% !important;
     perspective: 300px;
+    border: thin solid green;
   }
 
   .container-list-buttons {
-    padding: 10%;
+    border: thin solid yellow;
+    padding: 10px;
+    margin-top: -30px;
   }
 
   .button-option {
-    margin: 0.6em 0;
-    padding: 1em 1.2em;
+    margin: 0.2em 0;
+    padding: 0.8em 0.5em;
     cursor: pointer;
     perspective: 300px;
-    font-size: 1.1em;
+    font-size: 0.9em;
+  }
+
+  .container-main-title {
+    margin-top: 10px;
   }
 }
 
