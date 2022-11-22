@@ -10,7 +10,9 @@
 
         <!-- main title -->
         <div class="container-main-title">
-          <span class="sticker sticker-lg" data-text="TRIVIAL"><span>TRIVIAL</span></span>
+          <div class="title-main">
+            <h1 class="purples">TRIVIAL</h1>
+          </div>
         </div>
         <!-- end main title -->
 
@@ -74,7 +76,7 @@ export default {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
   .container {
-    width: 80%;
+    width: 82%;
     height: 100vh;
   }
 
@@ -94,11 +96,10 @@ export default {
   }
 
   .container-main-title {
-    margin-top: 60px !important;
+    margin-top: 120px !important;
     border: thin solid blue;
     height: 80px;
     width: 100%;
-    justify-content: center;
   }
 
   .container-list {
@@ -136,17 +137,42 @@ export default {
   color: var(--c5);
 }
 
-* {
-  /* box-sizing: border-box; */
-  --t: rgba(104, 8, 8, 0);
-  --w: #ffe300;
-  --c1: #ffcd00;
-  --c2: #fda000;
-  --c3: #e57400;
-  --c4: #fda000;
-  --c5: #ffcd00;
-  --c6: #4b220b;
-  --shine-angle: 15deg;
+.title-main {
+  font-family: 'Rocher';
+  text-align: center;
+  font-size: 70px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@font-palette-values --Grays {
+  font-family: Rocher;
+  base-palette: 9;
+}
+
+@font-palette-values --Purples {
+  font-family: Rocher;
+  base-palette: 11;
+}
+
+@font-palette-values --Mint {
+  font-family: Rocher;
+  base-palette: 1;
+}
+
+.grays {
+  font-palette: --Grays;
+}
+
+.purples {
+  font-palette: --Purples;
+}
+
+.mint {
+  font-palette: --Mint;
 }
 
 .sticker {
